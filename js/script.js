@@ -50,6 +50,7 @@ function render() {
 }
 
 function render2() {
+    logo();
     $name.html(stockData2.name);
 }
 
@@ -59,3 +60,25 @@ function clearData() {
     $daily.html("");
     logo.html("FIX ME ADD IMG");
 }
+
+function logo() {
+    let firstWord = userInput.replace(/ . */,'');
+    if (imageExists("https://logo.clearbit.com/" + userInput + ".com")) {
+        $logo.html("<img src=\"https://logo.clearbit.com/" + userInput + ".com\">");
+    } else if (imageExists("https://logo.clearbit.com/" + stockData2.name + ".com")) {
+        $logo.html("<img src=\"https://logo.clearbit.com/" + stockData2.name + ".com\">");
+    } else if (imageExists("https://logo.clearbit.com/" + firstWord + ".com")) {
+        $logo.html("<img src=\"https://logo.clearbit.com/" + firstWord + ".com\">");
+    } else {
+        $logo.html("FIXME: ADD FAILED IMAGES");
+    }
+}
+
+// function imageExists(imageUrl) {
+//     $.get(imageUrl)
+//     .done(function() {
+//         return true;
+//     }).fail(function() {
+//         return false;
+//     });
+// }
