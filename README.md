@@ -1,13 +1,18 @@
-# Stock Market Data App v0.01
+# Stock Market Data App v0.02
 ## Technologies Used
 * HTML
 * CSS
 * JavaScript
 * jQuery
 * AJAX
+## APIs Integrated
+* Logos: [ClearBit](https://dashboard.clearbit.com/docs#autocomplete-api)
+* Names: [WorldTradingData](https://www.worldtradingdata.com/documentation)
+* Stock Data: [AlphaVantage](https://www.alphavantage.co/documentation/)
 ## Features
 Users can search for the current price of a stock by using its associated acronym. The application will return the stock's full name and daily change as well. 
 The application pulls data from multiple APIs to serve to users once they have made a request.
+The logos are pullled from an API that uses queries to search an internal database. The application parses the logos and identifies the most accurate response. The accurate responses are determined using RegEx and user input.
 ## User Stories
 * Users can request to view the current value of a stock
 * Users can identify the name of a stock through the acronym.
