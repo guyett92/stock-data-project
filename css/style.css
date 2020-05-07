@@ -47,6 +47,13 @@ table {
 	border-spacing: 0;
 }
 
+button {
+	display: none;
+}
+
+dl {
+	display: none;
+}
 
 
 
