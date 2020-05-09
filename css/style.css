@@ -144,6 +144,7 @@ main {
 	background-color: #393f4d;
 	border-left: 2px solid #d4d4dc;
 	border-right: 2px solid #d4d4dc;
+	position: relative;
 }
 
 header {
@@ -177,12 +178,15 @@ header a:hover {
 }
 
 footer {
-	background-color: #1d1e22;
 	overflow: hidden;
-	margin-top: 3rem;
 	height: 3.5rem;
 	display: flex;
 	font-style: italic;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: #1d1e22;
+	margin-top: 2rem;
 }
 
 footer > p {
@@ -193,6 +197,7 @@ footer > p {
 #logo > img {
 	max-width: 40rem;
 }
+
 
 .nyse {
 	max-width: 40rem;
@@ -207,6 +212,8 @@ footer > p {
 	width: 40rem;
 	display: block;
 	margin: 0 auto;
+	padding-bottom: 3.5rem;
+	min-height: 20rem;
 }
 
 .link {
