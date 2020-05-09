@@ -8,10 +8,22 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script defer src="js/script.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main id="card">
-        <dl class="back">
+    <main>
+        <header>
+            <a href="https://aarondguyett.com" target="_blank">My Portolio</a>
+            <a href="https://linkedin.com/in/aarondguyett" target="_blank">My LinkedIn</a>
+            <a href="https://github.com/guyett92" target="_blank">My GitHub</a>
+            <a href="https://www.nyse.com/index" target="_blank">NYSE</a>
+        </header>
+        <h1>Stock Data</h1>
+        <h3>Enter in a stock symbol below to search for information!</h3>
+        <section>
+            <img class="nyse" src="img/nyse.jpg" alt="New York Stock Exchange">
+        </section>
+        <dl>
             <dd id="logo"></dd>
             <dt>Name</dt>
             <dd id="name"></dd>
@@ -20,22 +32,26 @@
             <dt>Day Change</dt>
             <dd id="daily"></dd>
         </dl>
-    </main>
-    <form>
-        <input type="text" placeholder="Stock">
-        <input type="submit" value="Get Stock Data">
-    </form>
-    <button>Reset</button>
-    <main>
-        <section>
+        <form>
+            <input type="text" placeholder="Stock">
+            <input type="submit" value="Get Stock Data">
+        </form>
+        <button>Reset</button>
+        <br>
+        <section class="desc">
             <article class="app-info">
                 <h2>Information</h2>
                 <p>The above application pulls data from ClearBit's API to serve logos. The stock data comes from Alpha Vantage's API and the name
                 from the stock symbol comes from World Trading Data's API. The application parses the API data to serve it's best guess at a logo.
                 If the logo is wrong, there is a form to fill out in order to help me improve the way the code identifies a match. The application
-                was created because a simple and clean UI did not exist for stock data that is accompanied by a logo.</p>
+                was created because a simple and clean UI did not exist for stock data that is accompanied by a logo. Please fill out the form if
+                the application does not return a valid logo. Some information may be missing when requesting a stock symbol based on the data 
+                available in the APIs.</p>
             </article>
         </section>
+        <footer>
+            <p>&copy; Aaron Guyett — 2020</p>
+        </footer>
     </main>
 </body>
 </html>
