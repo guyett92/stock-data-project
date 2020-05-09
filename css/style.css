@@ -61,7 +61,6 @@ p {
 button {
 	display: none;
 	margin: 0 auto;
-
 }
 
 button:active, input[type="submit"]:active {
@@ -181,6 +180,13 @@ footer {
 	background-color: #1d1e22;
 	overflow: hidden;
 	margin-top: 3rem;
+	height: 3.5rem;
+	display: flex;
+	font-style: italic;
+}
+
+footer > p {
+	margin: auto;
 	text-align: center;
 }
 
