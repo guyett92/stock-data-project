@@ -1,4 +1,4 @@
-# Stock Market Data App v0.02
+# Stock Market Data App v1.0
 ## Technologies Used
 * HTML
 * CSS
@@ -12,7 +12,7 @@
 ## Features
 Users can search for the current price of a stock by using its associated acronym. The application will return the stock's full name and daily change as well. 
 The application pulls data from multiple APIs to serve to users once they have made a request.
-The logos are pullled from an API that uses queries to search an internal database. The application parses the logos and identifies the most accurate response. The accurate responses are determined using RegEx and user input.
+The logos are pullled from an API that uses queries to search an internal database. The application includes a matching system that parses the title and attempts to align it with the logo query in order to identify the best response. The web page will also serve an image even if one is not loaded and prompts a user to respond to a form if the logos are misaligned.
 ## User Stories
 * Users can request to view the current value of a stock
 * Users can identify the name of a stock through the acronym.
