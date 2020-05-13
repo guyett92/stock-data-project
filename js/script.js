@@ -11,7 +11,7 @@ const defaultImg = ['https://images.unsplash.com/photo-1535320903710-d993d3d77d2
                     'https://images.unsplash.com/photo-1558588942-930faae5a389?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
                     'https://images.unsplash.com/photo-1585829364536-ce348dd72ebc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'];
 /*----- app's state (variables) -----*/
-let userInput, stockData, stockData2, logoData;
+let userInput, stockData, stockData2, logoData, curPrice, curDaily, basePrice, baseChange;
 /*----- cached element references -----*/
 const $input = $('input[type="text"]');
 const $logo = $('#logo');
@@ -19,10 +19,13 @@ const $name = $('#name');
 const $price = $('#price');
 const $daily = $('#daily');
 const $form = $('form');
+const currency = document.getElementById('money');
 
 /*----- event listeners -----*/
 $('form').on('submit', handleGetData);
 $('button').on('click', clearData);
+$('select').on('focus', getPrice);
+$('select').on('change', changeCurrency);
 
 /*----- functions -----*/
 function handleGetData(e) {
@@ -67,10 +70,13 @@ function handleGetData(e) {
     }
     );
 
-
+    //Renders the Form link
     imgMatch();
+    //Show the reset button
     $('button').show();
+    //Displays info if it is hidden
     displayInfo();
+    //Save the price for later conversions
 }
 
 //Render the stock data
@@ -145,5 +151,67 @@ function imgMatch() {
 function displayInfo() {
     if ($('dl').css('display') === 'none') {
         $('dl').show("slow");
+    }
+}
+
+//Function for currency converter FIXME: Switch statements? - default?
+function changeCurrency() {
+    let userChoice = currency.options[currency.selectedIndex].text;
+    switch (userChoice) {
+        case 'USD':
+            usConversion();
+            break;
+        case 'JPY':
+            japanConversion();
+            break;
+        case 'GBP':
+            normConv(0.82 ,"£");
+            break;
+        case 'CNY':
+            normConv(7.08, "¥");
+            break;
+        case 'EUR':
+            normConv(0.92, "€");
+            break;
+        case 'AED':
+            uaeConversion();
+            break;
+    }
+}
+
+//Function for converting when symbol is first and the decimal places are rounded to two
+function normConv(rate, symbol) {
+    curPrice = parseFloat(basePrice * rate).toFixed(2);
+    curDaily = parseFloat(baseChange * rate).toFixed(2);
+    $price.text(symbol + curPrice);
+    $daily.text(symbol + curDaily);
+}
+//Function for US conversion
+function usConversion() {
+    $price.text("$" + basePrice);
+    $daily.text("$" + baseChange);
+}
+
+//Function for Japan conversion
+function japanConversion() {
+    curPrice = parseInt(basePrice * 107.18);
+    curDaily = parseInt(baseChange * 107.18);
+    $price.text("¥" + curPrice);
+    $daily.text("¥" + curDaily);
+}
+
+//Function for UAE conversion
+function uaeConversion() {
+    curPrice = parseFloat(basePrice * 3.67).toFixed(2);
+    curDaily = parseFloat(baseChange * 3.67).toFixed(2);
+    $price.text(curPrice + "د.إ");
+    $daily.text(curDaily + "د.إ");
+}
+
+//Function to convert the price and daily change to a float if it hasn't been done already
+function getPrice() {
+    if (basePrice === undefined) {
+        basePrice = parseFloat($price.text().replace(/\$/,''),10);
+        baseChange = parseFloat($daily.text().replace(/\$/,''),10);
     }
 }

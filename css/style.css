@@ -193,6 +193,10 @@ footer > p {
 	margin: auto;
 	text-align: center;
 }
+/* Tooltip Image */
+dd > div > img {
+	max-width: 1rem;
+}
 
 #logo > img {
 	max-width: 40rem;
@@ -249,9 +253,27 @@ footer > p {
 	transition-duration: .15s;
 }
 
+/* Tooltip manager */
 
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
 
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 16rem;
+	background-color: #1d1e22;
+	color: #d4d4dc;
+	line-height: 0.8rem;
+	text-align: center;
+	font-size: 0.8rem;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 2;
+}
 
-
-
-
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}

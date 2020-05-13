@@ -27,6 +27,28 @@
             <dd id="logo"></dd>
             <dt>Name</dt>
             <dd id="name"></dd>
+            <dt><label for="currency">Choose a Currency</label></dt>
+            <dd id="currency">
+                <select id="money" onfocus="this.selectedIndex = -1;">
+                    <option value="usd">USD</option>
+                    <option value="jpy">JPY</option>
+                    <option value="gbp">GBP</option>
+                    <option value="cny">CNY</option>
+                    <option value="eur">EUR</option>
+                    <option value="aed">AED</option>
+                </select>
+                <div class="tooltip">
+                    <img src="img/question.webp">
+                    <span class="tooltiptext">
+                        USD = United States Dollar<br>
+                        JPY = Japanese Yen<br>
+                        GBP = British Pound Sterling<br>
+                        CNY = Chinese Yuan<br>
+                        EUR = Euro<br>
+                        AED = United Arab Emirates Dirham
+                    </span>
+                </div>
+            </dd>
             <dt>Price</dt>
             <dd id="price"></dd>
             <dt>Day Change</dt>
@@ -50,7 +72,7 @@
             </article>
         </section>
         <footer>
-            <p>&copy; Aaron Guyett — 2020</p>
+            <p>&copy; Aaron Guyett — 2020 — All currency conversions are correct as of May, 2020.</p>
         </footer>
     </main>
 </body>
