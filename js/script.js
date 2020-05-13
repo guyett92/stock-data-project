@@ -77,6 +77,10 @@ function handleGetData(e) {
     displayInfo();
     //Save the price for later conversions
     getPrice();
+    //Store a count of each acronym searched
+    storeCount();
+    //Reset the dropdown
+    $("select").val('first').change();
 }
 
 //Render the stock data
@@ -154,7 +158,7 @@ function displayInfo() {
     }
 }
 
-//Function for currency converter FIXME: Switch statements? - default?
+//Function for currency converter
 function changeCurrency() {
     let userChoice = currency.options[currency.selectedIndex].text;
     switch (userChoice) {
@@ -175,6 +179,8 @@ function changeCurrency() {
             break;
         case 'AED':
             uaeConversion();
+            break;
+        default:
             break;
     }
 }
@@ -213,5 +219,29 @@ function getPrice() {
     setTimeout(function(){ 
             basePrice = parseFloat($price.text().replace(/\$/,''),10);
             baseChange = parseFloat($daily.text().replace(/\$/,''),10);
-    }, 150);
+    }, 500);
+}
+
+//Function to store the count of an acronym to localstorage
+function storeCount() {
+    if (localStorage.getItem(userInput) !== null){
+            let counter = parseInt(localStorage.getItem(userInput)) + 1;
+            localStorage.setItem(userInput, counter);
+    } else {
+        localStorage.setItem(userInput, 1);
+    }
+    let currentCount = 0;
+    let currentSybol;
+    for (let [key, value] of Object.entries(localStorage)) {
+        if (parseInt(value) > currentCount) {
+            currentCount = value;
+            currentSymbol = key;
+        }
+    }
+    updateFavorite(currentSymbol, currentCount);
+}
+
+//Function to update the page after determining the local favorite
+function updateFavorite(symbol, count) {
+    $('#fav').html(`Your favorite search is ${symbol.toUpperCase()}: You've searched for it ${count} times.`);
 }

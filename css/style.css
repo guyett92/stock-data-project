@@ -198,6 +198,10 @@ dd > div > img {
 	max-width: 1rem;
 }
 
+#fav {
+	margin-top: 1.5rem;
+}
+
 #logo > img {
 	max-width: 40rem;
 }
