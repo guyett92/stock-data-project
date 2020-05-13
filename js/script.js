@@ -24,7 +24,6 @@ const currency = document.getElementById('money');
 /*----- event listeners -----*/
 $('form').on('submit', handleGetData);
 $('button').on('click', clearData);
-$('select').on('focus', getPrice);
 $('select').on('change', changeCurrency);
 
 /*----- functions -----*/
@@ -77,6 +76,7 @@ function handleGetData(e) {
     //Displays info if it is hidden
     displayInfo();
     //Save the price for later conversions
+    getPrice();
 }
 
 //Render the stock data
@@ -208,10 +208,10 @@ function uaeConversion() {
     $daily.text(curDaily + "د.إ");
 }
 
-//Function to convert the price and daily change to a float if it hasn't been done already
+//Function to convert the price and daily change to a float
 function getPrice() {
-    if (basePrice === undefined) {
-        basePrice = parseFloat($price.text().replace(/\$/,''),10);
-        baseChange = parseFloat($daily.text().replace(/\$/,''),10);
-    }
+    setTimeout(function(){ 
+            basePrice = parseFloat($price.text().replace(/\$/,''),10);
+            baseChange = parseFloat($daily.text().replace(/\$/,''),10);
+    }, 150);
 }
